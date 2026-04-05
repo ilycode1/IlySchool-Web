@@ -1,5 +1,5 @@
 // src/components/shared/Footer.jsx
-import { Instagram, Youtube, MessageCircle } from 'lucide-react'
+import { Camera, Play, MessageCircle } from 'lucide-react'
 import clsx from 'clsx'
 import { NAV_LINKS } from '@/data/navigation'
 import {
@@ -26,12 +26,12 @@ const Footer = () => {
     {
       label: 'Instagram',
       href: SOCIAL_MEDIA.instagram,
-      icon: Instagram,
+      icon: Camera,
     },
     {
       label: 'YouTube',
       href: SOCIAL_MEDIA.youtube,
-      icon: Youtube,
+      icon: Play,
     },
     {
       label: 'WhatsApp',

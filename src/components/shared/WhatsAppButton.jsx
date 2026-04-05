@@ -76,26 +76,44 @@ const WhatsAppButton = () => {
       )}
 
       {/* ── TOMBOL UTAMA ─────────────────────────────────────── */}
-      <a
-        href={generateWALink()}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => setIsTooltipOpen(false)}
-        aria-label="Chat via WhatsApp"
-        className={clsx(
-          'w-14 h-14 rounded-full',
-          'bg-green-500 hover:bg-green-600',
-          'flex items-center justify-center',
-          'shadow-lg hover:shadow-xl',
-          'transition-all duration-300',
-          'hover:scale-110 active:scale-95',
-          // Pulse animation untuk menarik perhatian
-          'ring-4 ring-green-500/30'
-        )}
-      >
-        <MessageCircle size={26} className="text-white" fill="white" />
-      </a>
-    </div>
+      <div className="relative">
+  {/* Pulse ring effect */}
+  <div
+    className={clsx(
+      'absolute inset-0 rounded-full',
+      'bg-green-500 opacity-30',
+      'animate-pulse-ring',
+    )}
+  />
+  {/* Pulse ring kedua — delay berbeda */}
+  <div
+    className={clsx(
+      'absolute inset-0 rounded-full',
+      'bg-green-500 opacity-20',
+    )}
+    style={{ animation: 'pulseRing 2s ease-out 0.5s infinite' }}
+  />
+
+  {/* Tombol utama */}
+  <a
+    href={generateWALink()}
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={() => setIsTooltipOpen(false)}
+    aria-label="Chat via WhatsApp"
+    className={clsx(
+      'relative w-14 h-14 rounded-full',
+      'bg-green-500 hover:bg-green-600',
+      'flex items-center justify-center',
+      'shadow-lg hover:shadow-xl',
+      'transition-all duration-300',
+      'hover:scale-110 active:scale-95',
+    )}
+  >
+    <MessageCircle size={26} className="text-white" fill="white" />
+  </a>
+</div>
+  </div>
   )
 }
 

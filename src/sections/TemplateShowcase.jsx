@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 // src/sections/TemplateShowcase.jsx
 import { useState, useMemo } from 'react'
 import { Eye, ArrowRight } from 'lucide-react'
@@ -8,8 +7,9 @@ import SectionLabel from '@/components/ui/SectionLabel'
 import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
 import useInView from '@/hooks/useInView'
-import { TEMPLATES, getPopularTemplates } from '@/data/templates'
+import { TEMPLATES } from '@/data/templates'
 import { generateWALinkByTemplate } from '@/utils/formatWhatsApp'
+import { useNavigate } from 'react-router-dom'
 
 // ── FILTER CATEGORIES ──────────────────────────────────────────
 const FILTERS = [
@@ -25,6 +25,7 @@ const FILTERS = [
 // ── TEMPLATE CARD ──────────────────────────────────────────────
 const TemplateCard = ({ template, index, isInView }) => {
   const [isHovered, setIsHovered] = useState(false)
+  const navigate = useNavigate()
 
   return (
     <div
@@ -78,32 +79,46 @@ const TemplateCard = ({ template, index, isInView }) => {
         )}
 
         {/* Hover overlay */}
-        <div
-          className={clsx(
-            'absolute inset-0 bg-primary/80',
-            'flex flex-col items-center justify-center gap-3',
-            'transition-all duration-300',
-            isHovered ? 'opacity-100' : 'opacity-0'
-          )}
-        >
-          <a
-            href={generateWALinkByTemplate(template.name)}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className={clsx(
-              'flex items-center gap-2',
-              'bg-white text-primary',
-              'px-5 py-2.5 rounded-xl',
-              'text-sm font-heading font-semibold',
-              'hover:bg-accent transition-colors duration-200',
-              'shadow-lg'
-            )}
-          >
-            <Eye size={16} />
-            Pilih Template Ini
-          </a>
-        </div>
+         <div
+    className={clsx(
+      'absolute inset-0 bg-primary/80',
+      'flex flex-col items-center justify-center gap-3',
+      'transition-all duration-300',
+      isHovered ? 'opacity-100' : 'opacity-0',
+    )}
+  >
+    {/* Tombol lihat detail */}
+    <button
+      onClick={() => navigate(`/template/${template.id}`)}
+      className={clsx(
+        'flex items-center gap-2',
+        'bg-white text-primary',
+        'px-5 py-2.5 rounded-xl',
+        'text-sm font-heading font-semibold',
+        'hover:bg-surface transition-colors duration-200',
+        'shadow-lg',
+      )}
+    >
+      <Eye size={16} />
+      Lihat Detail
+    </button>
+
+    {/* Tombol langsung pilih */}
+    <a
+      href={generateWALinkByTemplate(template.name)}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={(e) => e.stopPropagation()}
+      className={clsx(
+        'flex items-center gap-2',
+        'text-white/80 hover:text-white',
+        'text-xs font-heading',
+        'transition-colors duration-200',
+      )}
+    >
+      Langsung Pilih Template Ini →
+    </a>
+  </div>
       </div>
 
       {/* ── CARD INFO ─────────────────────────────────────── */}

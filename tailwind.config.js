@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    './index.html',
-    './src/**/*.{js,jsx}',
-  ],
+  content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
@@ -25,17 +22,50 @@ export default {
         heading: ['Poppins', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
       },
+      screens: {
+        xs: '475px', // ← untuk device sangat kecil
+      },
+
+      // Tambahkan spacing custom
+      spacing: {
+        18: '4.5rem',
+        88: '22rem',
+        128: '32rem',
+      },
+
+      // Tambahkan max-width custom
+      maxWidth: {
+        '8xl': '88rem',
+        '9xl': '96rem',
+      },
       animation: {
         'fade-up': 'fadeUp 0.6s ease forwards',
+        'fade-in': 'fadeIn 0.4s ease forwards',
+        float: 'float 3s ease-in-out infinite',
+        'float-slow': 'floatSlow 5s ease-in-out infinite',
+        'pulse-ring': 'pulseRing 2s ease-out infinite',
+        'slide-in-left': 'slideInLeft 0.6s ease forwards',
+        'scale-in': 'scaleIn 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards',
       },
       keyframes: {
         fadeUp: {
           '0%': { opacity: '0', transform: 'translateY(30px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        pulseRing: {
+          '0%': { transform: 'scale(1)', opacity: '0.8' },
+          '100%': { transform: 'scale(1.5)', opacity: '0' },
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.8)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
       },
     },
   },
   plugins: [],
 }
-

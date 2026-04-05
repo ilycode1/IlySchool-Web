@@ -179,71 +179,62 @@ const Navbar = () => {
       </nav>
 
       {/* ── MOBILE MENU ──────────────────────────────────────── */}
-      {/* Overlay gelap di belakang menu */}
       {isMenuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/50 md:hidden"
-          onClick={() => setMenuOpen(false)}
-        />
-      )}
+          className={clsx(
+            'fixed top-0 left-0 right-0 z-40',
+            'bg-white shadow-xl',
+            'md:hidden',
+            'transition-all duration-300 ease-in-out',
+            'max-h-screen overflow-y-auto',
+            'translate-y-0 opacity-100',
+          )}
+        >
+          {/* Padding atas untuk tidak overlap dengan navbar */}
+          <div className="pt-20 pb-6 px-4">
+            {/* Menu links */}
+            <div className="flex flex-col gap-1 mb-6">
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleMenuClick(e, link.href)}
+                  className={clsx(
+                    'px-4 py-3 rounded-lg',
+                    'text-sm font-heading font-medium text-gray-700',
+                    'hover:bg-surface hover:text-primary',
+                    'transition-all duration-200',
+                    activeSection === link.href.replace('#', '') &&
+                      'bg-surface text-primary'
+                  )}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
 
-      {/* Panel menu mobile — slide dari atas */}
-      <div
-        className={clsx(
-          'fixed top-0 left-0 right-0 z-40',
-          'bg-white shadow-xl',
-          'md:hidden',
-          'transition-all duration-300 ease-in-out',
-          // Saat terbuka → tampil. Saat tertutup → geser ke atas
-          isMenuOpen
-            ? 'translate-y-0 opacity-100'
-            : '-translate-y-full opacity-0 pointer-events-none'
-        )}
-      >
-        {/* Padding atas untuk tidak overlap dengan navbar */}
-        <div className="pt-20 pb-6 px-4">
-          {/* Menu links */}
-          <div className="flex flex-col gap-1 mb-6">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleMenuClick(e, link.href)}
-                className={clsx(
-                  'px-4 py-3 rounded-lg',
-                  'text-sm font-heading font-medium text-gray-700',
-                  'hover:bg-surface hover:text-primary',
-                  'transition-all duration-200',
-                  activeSection === link.href.replace('#', '') &&
-                    'bg-surface text-primary'
-                )}
+            {/* CTA buttons di mobile menu */}
+            <div className="flex flex-col gap-3 pt-4 border-t border-gray-100">
+              <Button
+                variant="outline"
+                fullWidth
+                href={NAV_CTA.secondary.href}
+                onClick={(e) => handleMenuClick(e, NAV_CTA.secondary.href)}
               >
-                {link.label}
-              </a>
-            ))}
-          </div>
-
-          {/* CTA buttons di mobile menu */}
-          <div className="flex flex-col gap-3 pt-4 border-t border-gray-100">
-            <Button
-              variant="outline"
-              fullWidth
-              href={NAV_CTA.secondary.href}
-              onClick={(e) => handleMenuClick(e, NAV_CTA.secondary.href)}
-            >
-              {NAV_CTA.secondary.label}
-            </Button>
-            <Button
-              variant="primary"
-              fullWidth
-              href={NAV_CTA.primary.href}
-              onClick={(e) => handleMenuClick(e, NAV_CTA.primary.href)}
-            >
-              {NAV_CTA.primary.label}
-            </Button>
+                {NAV_CTA.secondary.label}
+              </Button>
+              <Button
+                variant="primary"
+                fullWidth
+                href={NAV_CTA.primary.href}
+                onClick={(e) => handleMenuClick(e, NAV_CTA.primary.href)}
+              >
+                {NAV_CTA.primary.label}
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   )
 }

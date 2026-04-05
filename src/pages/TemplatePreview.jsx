@@ -1,0 +1,280 @@
+// src/pages/TemplatePreview.jsx
+// Halaman preview detail satu template
+// Diakses via URL: /template/:id
+// Contoh: /template/royal-blue
+
+import { useParams, useNavigate } from 'react-router-dom'
+import { ArrowLeft, ExternalLink } from 'lucide-react'
+import clsx from 'clsx'
+import Button from '@/components/ui/Button'
+import Badge from '@/components/ui/Badge'
+import { getTemplateById, TEMPLATES } from '@/data/templates'
+import { generateWALinkByTemplate } from '@/utils/formatWhatsApp'
+import { Helmet } from 'react-helmet-async'
+import { SEO_CONFIG } from '@/config/seo'
+
+// ── RELATED TEMPLATE CARD ──────────────────────────────────────
+// Card template lain yang ditampilkan di bagian bawah
+const RelatedCard = ({ template, onClick }) => (
+  <div
+    onClick={onClick}
+    className={clsx(
+      'cursor-pointer group',
+      'rounded-xl overflow-hidden',
+      'border border-gray-100 shadow-sm',
+      'hover:shadow-md hover:-translate-y-1',
+      'transition-all duration-300'
+    )}
+  >
+    <div className="aspect-video overflow-hidden">
+      <img
+        src={template.thumbnail}
+        alt={template.name}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+    </div>
+    <div className="p-3 bg-white">
+      <p className="font-heading font-semibold text-sm text-gray-800">
+        {template.name}
+      </p>
+      <p className="text-xs text-gray-400 mt-0.5">{template.suitableFor[0]}</p>
+    </div>
+  </div>
+)
+
+const TemplatePreview = () => {
+  // Ambil id dari URL parameter
+  const { id } = useParams()
+  const navigate = useNavigate()
+
+  // Cari template berdasarkan id
+  const template = getTemplateById(id)
+
+  // Kalau template tidak ditemukan → tampilkan halaman not found
+  if (!template) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <p className="font-heading text-6xl font-bold text-gray-200 mb-4">
+            404
+          </p>
+          <p className="font-heading font-semibold text-gray-700 mb-2">
+            Template tidak ditemukan
+          </p>
+          <p className="text-gray-500 text-sm mb-6">
+            Template dengan id "{id}" tidak ada.
+          </p>
+          <Button variant="primary" onClick={() => navigate('/')}>
+            Kembali ke Beranda
+          </Button>
+        </div>
+      </div>
+    )
+  }
+
+  // Template lain — exclude yang sedang dilihat, ambil 3
+  const seo = SEO_CONFIG.templatePreview(template)
+  const relatedTemplates = TEMPLATES.filter((t) => t.id !== template.id).slice(
+    0,
+    3
+  )
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* ── SEO META TAGS ─────────────────────────────────── */}
+      <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="keywords" content={seo.keywords} />
+        <meta property="og:title" content={seo.ogTitle} />
+        <meta property="og:description" content={seo.ogDescription} />
+        <meta property="og:image" content={seo.ogImage} />
+        <link rel="canonical" href={seo.canonical} />
+      </Helmet>
+      {/* ── TOP BAR ─────────────────────────────────────────── */}
+      <div className="bg-white border-b border-gray-100 sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Back button */}
+            <button
+              onClick={() => navigate(-1)}
+              className="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors"
+            >
+              <ArrowLeft size={18} />
+              <span className="text-sm font-heading font-medium">Kembali</span>
+            </button>
+
+            {/* Template info */}
+            <div className="flex items-center gap-3">
+              <span className="font-heading font-semibold text-gray-800">
+                Template {template.name}
+              </span>
+              {template.popular && (
+                <Badge variant="solid-accent" size="sm">
+                  ⭐ Populer
+                </Badge>
+              )}
+            </div>
+
+            {/* CTA */}
+            <Button
+              variant="primary"
+              size="sm"
+              href={generateWALinkByTemplate(template.name)}
+              external
+            >
+              Pilih Template Ini
+              <ExternalLink size={14} />
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* ── MAIN CONTENT ────────────────────────────────────── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          {/* ── KOLOM KIRI: Preview ──────────────────────────── */}
+          <div className="lg:col-span-2">
+            {/* Browser mockup frame */}
+            <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200">
+              {/* Browser chrome */}
+              <div className="bg-gray-800 px-4 py-3 flex items-center gap-3">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-red-400" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                  <div className="w-3 h-3 rounded-full bg-green-400" />
+                </div>
+                {/* URL bar */}
+                <div className="flex-1 bg-gray-700 rounded-md px-3 py-1.5 flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-green-400/60 flex-shrink-0" />
+                  <span className="text-xs text-gray-400 font-mono truncate">
+                    namasekolah.ilyschool.com
+                  </span>
+                </div>
+              </div>
+
+              {/* Preview image */}
+              <img
+                src={template.thumbnail}
+                alt={`Preview ${template.name}`}
+                className="w-full"
+              />
+            </div>
+
+            {/* Color palette */}
+            <div className="mt-6 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <h3 className="font-heading font-semibold text-gray-800 mb-4 text-sm uppercase tracking-wider">
+                Palet Warna Template
+              </h3>
+              <div className="flex items-center gap-4">
+                {Object.entries(template.colors).map(([name, color]) => (
+                  <div key={name} className="flex flex-col items-center gap-2">
+                    <div
+                      className="w-12 h-12 rounded-xl shadow-sm border border-gray-100"
+                      style={{ backgroundColor: color }}
+                    />
+                    <span className="text-xs text-gray-400 font-mono">
+                      {color}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ── KOLOM KANAN: Info ────────────────────────────── */}
+          <div className="flex flex-col gap-6">
+            {/* Template info card */}
+            <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <span className="text-xs text-gray-400 font-heading">
+                    #{template.number}
+                  </span>
+                  <h2 className="font-heading font-bold text-2xl text-gray-900">
+                    {template.name}
+                  </h2>
+                </div>
+                {template.popular && (
+                  <Badge variant="solid-accent">⭐ Populer</Badge>
+                )}
+              </div>
+
+              <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                {template.description}
+              </p>
+
+              {/* Cocok untuk */}
+              <div className="mb-6">
+                <p className="text-xs font-heading font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                  Cocok untuk
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {template.suitableFor.map((type) => (
+                    <Badge key={type} variant="primary" size="sm">
+                      {type}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA */}
+              <Button
+                variant="primary"
+                fullWidth
+                size="lg"
+                href={generateWALinkByTemplate(template.name)}
+                external
+              >
+                Pilih Template Ini
+              </Button>
+
+              <p className="text-center text-xs text-gray-400 mt-3">
+                Mulai dari Rp 100.000 / tahun
+              </p>
+            </div>
+
+            {/* Info box */}
+            <div className="bg-surface rounded-2xl p-5 border border-gray-100">
+              <h4 className="font-heading font-semibold text-gray-800 text-sm mb-3">
+                Yang Anda Dapatkan
+              </h4>
+              {[
+                '✓ Template ini langsung aktif',
+                '✓ Konten disesuaikan data sekolah',
+                '✓ SSL https:// gratis',
+                '✓ Responsif di semua perangkat',
+                '✓ 12x perubahan konten / tahun',
+              ].map((item) => (
+                <p
+                  key={item}
+                  className="text-xs text-gray-500 py-1.5 border-b border-gray-100 last:border-0"
+                >
+                  {item}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── RELATED TEMPLATES ───────────────────────────────── */}
+        <div className="mt-16">
+          <h3 className="font-heading font-semibold text-gray-800 text-lg mb-6">
+            Template Lainnya
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {relatedTemplates.map((t) => (
+              <RelatedCard
+                key={t.id}
+                template={t}
+                onClick={() => navigate(`/template/${t.id}`)}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default TemplatePreview

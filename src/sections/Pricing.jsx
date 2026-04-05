@@ -44,8 +44,7 @@ const PricingCard = ({ plan, index, isInView }) => {
       className={clsx(
         'relative flex flex-col rounded-2xl',
         'transition-all duration-700',
-        // Popular card lebih besar di desktop
-        plan.popular ? 'lg:-mt-4 lg:-mb-4' : '',
+        plan.popular ? 'lg:-mt-4 lg:-mb-4' : '', // ← sudah benar, pastikan ada lg:
         isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       )}
       style={{ transitionDelay: isInView ? `${index * 150}ms` : '0ms' }}

@@ -11,7 +11,7 @@ import {
 import clsx from 'clsx'
 import Button from '@/components/ui/Button'
 import { generateWALink } from '@/utils/formatWhatsApp'
-import { handleNavClick } from '@/utils/scrollTo'
+// import { handleNavClick } from '@/utils/scrollTo'
 import { GFORM_URL } from '@/config/constants'
 
 // ── DATA SLIDES ────────────────────────────────────────────────

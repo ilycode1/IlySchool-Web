@@ -163,7 +163,7 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs text-gray-500">
-              © {currentYear} {BRAND_NAME}.com — Produk dari {PARENT_BRAND}
+              © {currentYear} {BRAND_NAME}.com — Part Of {PARENT_BRAND}
             </p>
             <p className="text-xs text-gray-500">
               Semua hak dilindungi undang-undang.

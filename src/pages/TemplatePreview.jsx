@@ -4,7 +4,7 @@
 // Contoh: /template/royal-blue
 
 import { useParams, useNavigate } from 'react-router-dom'
-import { ArrowLeft, ExternalLink } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Eye } from 'lucide-react'
 import clsx from 'clsx'
 import Button from '@/components/ui/Button'
 import Badge from '@/components/ui/Badge'
@@ -117,15 +117,26 @@ const TemplatePreview = () => {
             </div>
 
             {/* CTA */}
-            <Button
-              variant="primary"
-              size="sm"
-              href={generateWALinkByTemplate(template.name)}
-              external
-            >
-              Pilih Template Ini
-              <ExternalLink size={14} />
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                href={template.previewUrl}
+                external
+              >
+                <Eye size={14} />
+                Lihat Preview
+              </Button>
+              <Button
+                variant="primary"
+                size="sm"
+                href={generateWALinkByTemplate(template.name)}
+                external
+              >
+                Pilih Template Ini
+                <ExternalLink size={14} />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -153,11 +164,11 @@ const TemplatePreview = () => {
                 </div>
               </div>
 
-              {/* Preview image */}
-              <img
-                src={template.thumbnail}
-                alt={`Preview ${template.name}`}
-                className="w-full"
+              {/* Preview iframe */}
+              <iframe
+                src={template.previewUrl}
+                title={`Preview ${template.name}`}
+                className="w-full h-[600px] border-0"
               />
             </div>
 

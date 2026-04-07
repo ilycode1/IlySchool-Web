@@ -115,14 +115,7 @@ const App = () => {
         {/* ── TEMPLATE PREVIEW ────────────────────────────── */}
         <Route
           path="/template/:id"
-          element={
-            <Layout>
-              {/* SEO untuk template preview di-handle
-                  di dalam komponen TemplatePreview sendiri
-                  karena butuh data template yang dinamis */}
-              <TemplatePreview />
-            </Layout>
-          }
+          element={<TemplatePreview />}
         />
 
         {/* ── 404 NOT FOUND ───────────────────────────────── */}

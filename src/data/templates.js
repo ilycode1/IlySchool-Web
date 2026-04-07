@@ -12,6 +12,7 @@ export const TEMPLATES = [
     },
     thumbnail: 'https://placehold.co/800x600/1a3c6e/ffffff?text=Royal+Blue',
     popular: true,
+    previewUrl: 'https://royal-blue.ilyschool.com',
   },
   {
     id: 'forest-green',

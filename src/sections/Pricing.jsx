@@ -263,7 +263,7 @@ const Pricing = () => {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button
               variant="primary"
-              href={`https://wa.me/${import.meta.env.VITE_WA_NUMBER || '6281234567890'}?text=${encodeURIComponent('Halo ilyschool, saya belum yakin pilih paket mana. Bisa bantu rekomendasikan?')}`}
+              href={`https://wa.me/${import.meta.env.VITE_WA_NUMBER || '6285178226071'}?text=${encodeURIComponent('Halo ilyschool, saya belum yakin pilih paket mana. Bisa bantu rekomendasikan?')}`}
               external
             >
               Tanya via WhatsApp

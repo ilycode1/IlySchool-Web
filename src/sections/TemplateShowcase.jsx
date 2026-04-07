@@ -79,46 +79,46 @@ const TemplateCard = ({ template, index, isInView }) => {
         )}
 
         {/* Hover overlay */}
-         <div
-    className={clsx(
-      'absolute inset-0 bg-primary/80',
-      'flex flex-col items-center justify-center gap-3',
-      'transition-all duration-300',
-      isHovered ? 'opacity-100' : 'opacity-0',
-    )}
-  >
-    {/* Tombol lihat detail */}
-    <button
-      onClick={() => navigate(`/template/${template.id}`)}
-      className={clsx(
-        'flex items-center gap-2',
-        'bg-white text-primary',
-        'px-5 py-2.5 rounded-xl',
-        'text-sm font-heading font-semibold',
-        'hover:bg-surface transition-colors duration-200',
-        'shadow-lg',
-      )}
-    >
-      <Eye size={16} />
-      Lihat Detail
-    </button>
+        <div
+          className={clsx(
+            'absolute inset-0 bg-primary/80',
+            'flex flex-col items-center justify-center gap-3',
+            'transition-all duration-300',
+            isHovered ? 'opacity-100' : 'opacity-0'
+          )}
+        >
+          {/* Tombol lihat detail */}
+          <button
+            onClick={() => navigate(`/template/${template.id}`)}
+            className={clsx(
+              'flex items-center gap-2',
+              'bg-white text-primary',
+              'px-5 py-2.5 rounded-xl',
+              'text-sm font-heading font-semibold',
+              'hover:bg-surface transition-colors duration-200',
+              'shadow-lg'
+            )}
+          >
+            <Eye size={16} />
+            Lihat Detail
+          </button>
 
-    {/* Tombol langsung pilih */}
-    <a
-      href={generateWALinkByTemplate(template.name)}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={(e) => e.stopPropagation()}
-      className={clsx(
-        'flex items-center gap-2',
-        'text-white/80 hover:text-white',
-        'text-xs font-heading',
-        'transition-colors duration-200',
-      )}
-    >
-      Langsung Pilih Template Ini →
-    </a>
-  </div>
+          {/* Tombol langsung pilih */}
+          <a
+            href={generateWALinkByTemplate(template.name)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className={clsx(
+              'flex items-center gap-2',
+              'text-white/80 hover:text-white',
+              'text-xs font-heading',
+              'transition-colors duration-200'
+            )}
+          >
+            Langsung Pilih Template Ini →
+          </a>
+        </div>
       </div>
 
       {/* ── CARD INFO ─────────────────────────────────────── */}
@@ -274,7 +274,7 @@ const TemplateShowcase = () => {
           <Button
             variant="primary"
             size="lg"
-            href={`https://wa.me/${import.meta.env.VITE_WA_NUMBER || '6281234567890'}?text=${encodeURIComponent('Halo ilyschool, saya mau konsultasi pilih template yang cocok untuk sekolah kami.')}`}
+            href={`https://wa.me/${import.meta.env.VITE_WA_NUMBER || '6285178226071'}?text=${encodeURIComponent('Halo ilyschool, saya mau konsultasi pilih template yang cocok untuk sekolah kami.')}`}
             external
           >
             Konsultasi Pilih Template

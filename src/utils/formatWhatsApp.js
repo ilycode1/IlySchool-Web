@@ -10,10 +10,10 @@ import { WHATSAPP_NUMBER, WA_DEFAULT_MESSAGE } from '@/config/constants'
 //
 // Contoh penggunaan:
 // generateWALink()
-// → 'https://wa.me/6281234567890?text=Halo%20ilyschool...'
+// → 'https://wa.me/6285178226071?text=Halo%20ilyschool...'
 //
 // generateWALink('Saya tertarik Paket Hadir')
-// → 'https://wa.me/6281234567890?text=Saya%20tertarik...'
+// → 'https://wa.me/6285178226071?text=Saya%20tertarik...'
 // ================================================================
 export const generateWALink = (message = '') => {
   const encodedMessage = message

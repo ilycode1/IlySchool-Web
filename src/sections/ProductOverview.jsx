@@ -230,10 +230,10 @@ const ProductOverview = () => {
           ))}
         </div>
 
-        {/* Caption */}
+        {/* Caption
         <p className="text-center text-xs text-gray-400 mt-4">
           * Harga dan estimasi berdasarkan rata-rata pasar, dapat bervariasi
-        </p>
+        </p> */}
       </div>
     </SectionWrapper>
   )

@@ -230,7 +230,7 @@ const Testimonials = () => {
           {/* ── KOLOM TENGAH & KANAN: Testimoni card ─────────── */}
           <div className="lg:col-span-2">
             <div
-              className="relative bg-surface rounded-2xl p-8 border border-gray-100"
+              className="relative bg-surface rounded-2xl p-10 pb-20 border border-gray-100"
               style={{ minHeight: '320px' }}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
@@ -275,7 +275,7 @@ const Testimonials = () => {
               </div>
 
               {/* Progress dots */}
-              <div className="absolute bottom-6 left-8 flex gap-1.5">
+              {/* <div className="absolute bottom-6 left-8 flex gap-1.5">
                 {TESTIMONIALS.map((_, i) => (
                   <button
                     key={i}
@@ -289,7 +289,7 @@ const Testimonials = () => {
                     aria-label={`Testimoni ${i + 1}`}
                   />
                 ))}
-              </div>
+              </div> */}
             </div>
 
             {/* Rating summary */}

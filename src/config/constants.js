@@ -15,8 +15,9 @@ export const EMAIL = import.meta.env.VITE_EMAIL || 'halo@ilyschool.com'
 export const SOCIAL_MEDIA = {
   instagram:
     import.meta.env.VITE_INSTAGRAM || 'https://instagram.com/ilyschool',
-  tiktok: 'https://tiktok.com/@ilyschool',
-  youtube: 'https://youtube.com/@ilyschool',
+  tiktok: import.meta.env.VITE_TIKTOK || 'https://tiktok.com/@ilyschool',
+  youtube: import.meta.env.VITE_YOUTUBE || 'https://youtube.com/@ilyschool',
+  website: import.meta.env.VITE_WEBSITE || `https://${BRAND_DOMAIN}`,
 }
 
 // PESAN WHATSAPP DEFAULT

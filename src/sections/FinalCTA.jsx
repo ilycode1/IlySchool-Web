@@ -1,5 +1,11 @@
 // src/sections/FinalCTA.jsx
-import { ArrowRight, MessageCircle } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+
+const WhatsAppIcon = () => (
+  <svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor">
+    <path d="M16.003 2C8.28 2 2 8.28 2 16.003c0 2.47.654 4.786 1.797 6.788L2 30l7.397-1.77A13.94 13.94 0 0 0 16.003 30C23.72 30 30 23.72 30 16.003 30 8.28 23.72 2 16.003 2zm0 25.538a11.51 11.51 0 0 1-5.886-1.614l-.422-.252-4.39 1.05 1.077-4.276-.277-.44A11.538 11.538 0 1 1 16.003 27.538zm6.32-8.647c-.347-.174-2.055-1.014-2.374-1.13-.32-.115-.552-.174-.784.174-.232.347-.9 1.13-1.103 1.362-.203.232-.406.26-.753.087-.347-.174-1.463-.54-2.787-1.72-1.03-.918-1.726-2.052-1.928-2.398-.203-.347-.022-.535.152-.707.156-.156.347-.406.52-.608.174-.203.232-.347.347-.578.116-.232.058-.434-.029-.608-.087-.174-.784-1.89-1.074-2.588-.283-.68-.57-.587-.784-.598l-.667-.012c-.232 0-.608.087-.927.434-.32.347-1.218 1.19-1.218 2.903s1.247 3.368 1.42 3.6c.174.232 2.455 3.748 5.95 5.254.832.359 1.48.573 1.986.733.835.266 1.595.228 2.196.138.67-.1 2.055-.84 2.345-1.652.29-.812.29-1.508.203-1.652-.086-.145-.318-.232-.665-.406z"/>
+  </svg>
+)
 import clsx from 'clsx'
 import SectionLabel from '@/components/ui/SectionLabel'
 import Button from '@/components/ui/Button'
@@ -80,8 +86,8 @@ const FinalCTA = () => {
               external
               className="shadow-lg shadow-accent/30"
             >
-              <MessageCircle size={20} />
-              Mulai via WhatsApp
+              <WhatsAppIcon />
+              Hubungi Kami Sekarang
             </Button>
 
             <Button variant="white" size="lg" href={GFORM_URL} external>

@@ -1,5 +1,5 @@
 // src/components/shared/Footer.jsx
-import { Camera, Play, MessageCircle } from 'lucide-react'
+import { Globe } from 'lucide-react'
 import clsx from 'clsx'
 import { NAV_LINKS } from '@/data/navigation'
 import {
@@ -10,6 +10,30 @@ import {
 } from '@/config/constants'
 import { handleNavClick, scrollToTop } from '@/utils/scrollTo'
 import { generateWALink } from '@/utils/formatWhatsApp'
+
+const InstagramIcon = () => (
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </svg>
+)
+
+const TikTokIcon = () => (
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.19 8.19 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+  </svg>
+)
+
+const YouTubeIcon = () => (
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+  </svg>
+)
+
+const WhatsAppIcon = () => (
+  <svg viewBox="0 0 32 32" width="14" height="14" fill="currentColor">
+    <path d="M16.003 2C8.28 2 2 8.28 2 16.003c0 2.47.654 4.786 1.797 6.788L2 30l7.397-1.77A13.94 13.94 0 0 0 16.003 30C23.72 30 30 23.72 30 16.003 30 8.28 23.72 2 16.003 2zm0 25.538a11.51 11.51 0 0 1-5.886-1.614l-.422-.252-4.39 1.05 1.077-4.276-.277-.44A11.538 11.538 0 1 1 16.003 27.538zm6.32-8.647c-.347-.174-2.055-1.014-2.374-1.13-.32-.115-.552-.174-.784.174-.232.347-.9 1.13-1.103 1.362-.203.232-.406.26-.753.087-.347-.174-1.463-.54-2.787-1.72-1.03-.918-1.726-2.052-1.928-2.398-.203-.347-.022-.535.152-.707.156-.156.347-.406.52-.608.174-.203.232-.347.347-.578.116-.232.058-.434-.029-.608-.087-.174-.784-1.89-1.074-2.588-.283-.68-.57-.587-.784-.598l-.667-.012c-.232 0-.608.087-.927.434-.32.347-1.218 1.19-1.218 2.903s1.247 3.368 1.42 3.6c.174.232 2.455 3.748 5.95 5.254.832.359 1.48.573 1.986.733.835.266 1.595.228 2.196.138.67-.1 2.055-.84 2.345-1.652.29-.812.29-1.508.203-1.652-.086-.145-.318-.232-.665-.406z"/>
+  </svg>
+)
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -23,21 +47,10 @@ const Footer = () => {
   ]
 
   const socialLinks = [
-    {
-      label: 'Instagram',
-      href: SOCIAL_MEDIA.instagram,
-      icon: Camera,
-    },
-    {
-      label: 'YouTube',
-      href: SOCIAL_MEDIA.youtube,
-      icon: Play,
-    },
-    {
-      label: 'WhatsApp',
-      href: generateWALink(),
-      icon: MessageCircle,
-    },
+    { label: 'Instagram', href: SOCIAL_MEDIA.instagram, Icon: InstagramIcon },
+    { label: 'TikTok',    href: SOCIAL_MEDIA.tiktok,    Icon: TikTokIcon    },
+    { label: 'YouTube',   href: SOCIAL_MEDIA.youtube,   Icon: YouTubeIcon   },
+    { label: 'Website',   href: SOCIAL_MEDIA.website,   Icon: Globe         },
   ]
 
   return (
@@ -63,7 +76,7 @@ const Footer = () => {
             {/* Social Media Icons */}
             <div className="flex items-center gap-3">
               {socialLinks.map((social) => {
-                const Icon = social.icon
+                const Icon = social.Icon
                 return (
                   <a
                     key={social.label}
@@ -138,7 +151,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="text-sm text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-2"
                 >
-                  <MessageCircle size={14} />
+                  <WhatsAppIcon />
                   WhatsApp Kami
                 </a>
               </li>

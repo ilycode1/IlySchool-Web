@@ -17,6 +17,43 @@ export const SEO_CONFIG = {
     canonical: 'https://ilyschool.com',
   },
 
+  // ── BLOG LISTING ───────────────────────────────────────────
+  blog: {
+    title: 'Blog & Tips Sekolah Digital | ilyschool',
+    description:
+      'Tips dan panduan seputar website sekolah, konten digital, dan transformasi digital untuk institusi pendidikan Indonesia.',
+    keywords: 'blog website sekolah, tips digital sekolah, panduan website pendidikan',
+    ogTitle: 'Blog & Tips | ilyschool',
+    ogDescription: 'Tips praktis seputar website sekolah dan transformasi digital pendidikan.',
+    canonical: 'https://ilyschool.com/blog',
+  },
+
+  // ── BLOG DETAIL ─────────────────────────────────────────────
+  // Fungsi — butuh data post dinamis
+  blogPost: (post) => ({
+    title: post.metaTitle || `${post.title} | ilyschool`,
+    description: post.metaDescription || post.excerpt,
+    keywords: post.tags.join(', '),
+    ogTitle: post.title,
+    ogDescription: post.excerpt,
+    ogImage: post.thumbnail || '/og-image.jpg',
+    canonical: `https://ilyschool.com/blog/${post.slug}`,
+  }),
+
+  // ── KEBIJAKAN PRIVASI ───────────────────────────────────────
+  privacyPolicy: {
+    title: 'Kebijakan Privasi | ilyschool',
+    description: 'Kebijakan privasi ilyschool — bagaimana kami mengumpulkan, menggunakan, dan melindungi data Anda.',
+    canonical: 'https://ilyschool.com/kebijakan-privasi',
+  },
+
+  // ── SYARAT & KETENTUAN ──────────────────────────────────────
+  termsConditions: {
+    title: 'Syarat & Ketentuan | ilyschool',
+    description: 'Syarat dan ketentuan penggunaan layanan ilyschool — platform website sekolah profesional Indonesia.',
+    canonical: 'https://ilyschool.com/syarat-ketentuan',
+  },
+
   // ── HALAMAN TEMPLATE PREVIEW ───────────────────────────────
   // Fungsi — bukan object — karena butuh data template dinamis
   templatePreview: (template) => ({

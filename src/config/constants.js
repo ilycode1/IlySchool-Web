@@ -8,16 +8,20 @@ export const BRAND_DOMAIN = 'ilyschool.com'
 // KONTAK
 export const WHATSAPP_NUMBER = import.meta.env.VITE_WA_NUMBER || '6285178226071'
 export const GFORM_URL =
-  import.meta.env.VITE_GFORM_URL || 'https://forms.gle/xxxxxx'
-export const EMAIL = import.meta.env.VITE_EMAIL || 'halo@ilyschool.com'
+  import.meta.env.VITE_GFORM_URL || 'https://forms.gle/bSQZNPF9vHL8nXeh9'
+export const EMAIL = import.meta.env.VITE_EMAIL || 'ilycode2@gmail.com'
 
 // SOCIAL MEDIA
 export const SOCIAL_MEDIA = {
   instagram:
-    import.meta.env.VITE_INSTAGRAM || 'https://instagram.com/ilyschool',
-  tiktok: import.meta.env.VITE_TIKTOK || 'https://tiktok.com/@ilyschool',
-  youtube: import.meta.env.VITE_YOUTUBE || 'https://youtube.com/@ilyschool',
-  website: import.meta.env.VITE_WEBSITE || `https://${BRAND_DOMAIN}`,
+    import.meta.env.VITE_INSTAGRAM || 'https://www.instagram.com/ilycode_/',
+  tiktok:
+    import.meta.env.VITE_TIKTOK ||
+    'https://www.tiktok.com/@ily_code?lang=id-ID',
+  youtube:
+    import.meta.env.VITE_YOUTUBE ||
+    'https://youtube.com/@ilycode-z4f?si=_zzrxAcWmQOnnmM',
+  website: import.meta.env.VITE_WEBSITE || `https://ilycode.my.id`,
 }
 
 // PESAN WHATSAPP DEFAULT

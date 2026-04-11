@@ -136,7 +136,7 @@ const ProductOverview = () => {
       {/* ── DIVIDER ─────────────────────────────────────────── */}
       <div className="flex items-center gap-6 mb-20">
         <div className="flex-1 h-px bg-gray-100" />
-        <span className="text-xs font-heading font-semibold text-gray-300 uppercase tracking-widest">
+        <span className="text-xl font-heading font-semibold text-black uppercase tracking-widest">
           Mengapa memilih ilyschool
         </span>
         <div className="flex-1 h-px bg-gray-100" />

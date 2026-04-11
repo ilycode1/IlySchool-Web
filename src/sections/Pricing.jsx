@@ -18,14 +18,14 @@ const FeatureRow = ({ feature }) => (
         <Check size={11} className="text-primary" strokeWidth={3} />
       </div>
     ) : (
-      <div className="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-        <X size={11} className="text-gray-300" strokeWidth={3} />
+      <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+        <X size={11} className="text-red-400" strokeWidth={3} />
       </div>
     )}
     <span
       className={clsx(
         'text-sm leading-relaxed',
-        feature.included ? 'text-gray-600' : 'text-gray-300'
+        feature.included ? 'text-gray-600' : 'text-red-400 line-through'
       )}
     >
       {feature.text}

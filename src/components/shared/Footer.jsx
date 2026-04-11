@@ -39,11 +39,10 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   const companyLinks = [
-    { label: 'Tentang Kami', href: '#about' },
-    { label: 'Blog & Tips', href: '#blog' },
-    { label: 'Karir', href: '#karir' },
-    { label: 'Kebijakan Privasi', href: '#privasi' },
-    { label: 'Syarat & Ketentuan', href: '#syarat' },
+    { label: 'Tentang Kami', href: '#about', external: false },
+    { label: 'Blog & Tips', href: '/blog', external: true },
+    { label: 'Kebijakan Privasi', href: '/kebijakan-privasi', external: true },
+    { label: 'Syarat & Ketentuan', href: '/syarat-ketentuan', external: true },
   ]
 
   const socialLinks = [
@@ -129,6 +128,9 @@ const Footer = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    {...(link.external
+                      ? { target: '_blank', rel: 'noopener noreferrer' }
+                      : {})}
                     className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                   >
                     {link.label}

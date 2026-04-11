@@ -7,6 +7,10 @@ import Footer from '@/components/shared/Footer'
 import WhatsAppButton from '@/components/shared/WhatsAppButton'
 import Home from '@/pages/Home'
 import TemplatePreview from '@/pages/TemplatePreview'
+import Blog from '@/pages/Blog'
+import BlogDetail from '@/pages/BlogDetail'
+import PrivacyPolicy from '@/pages/PrivacyPolicy'
+import TermsConditions from '@/pages/TermsConditions'
 import { SEO_CONFIG, DEFAULT_SEO } from '@/config/seo'
 import { BRAND_NAME } from '@/config/constants'
 
@@ -116,6 +120,54 @@ const App = () => {
         <Route
           path="/template/:id"
           element={<TemplatePreview />}
+        />
+
+        {/* ── BLOG LISTING ────────────────────────────────── */}
+        <Route
+          path="/blog"
+          element={
+            <Layout>
+              <Helmet>
+                <title>{SEO_CONFIG.blog.title}</title>
+                <meta name="description" content={SEO_CONFIG.blog.description} />
+                <meta name="keywords" content={SEO_CONFIG.blog.keywords} />
+                <meta property="og:title" content={SEO_CONFIG.blog.ogTitle} />
+                <meta property="og:description" content={SEO_CONFIG.blog.ogDescription} />
+                <link rel="canonical" href={SEO_CONFIG.blog.canonical} />
+              </Helmet>
+              <Blog />
+            </Layout>
+          }
+        />
+
+        {/* ── BLOG DETAIL ─────────────────────────────────── */}
+        <Route
+          path="/blog/:slug"
+          element={
+            <Layout>
+              <BlogDetail />
+            </Layout>
+          }
+        />
+
+        {/* ── KEBIJAKAN PRIVASI ────────────────────────────── */}
+        <Route
+          path="/kebijakan-privasi"
+          element={
+            <Layout>
+              <PrivacyPolicy />
+            </Layout>
+          }
+        />
+
+        {/* ── SYARAT & KETENTUAN ───────────────────────────── */}
+        <Route
+          path="/syarat-ketentuan"
+          element={
+            <Layout>
+              <TermsConditions />
+            </Layout>
+          }
         />
 
         {/* ── 404 NOT FOUND ───────────────────────────────── */}

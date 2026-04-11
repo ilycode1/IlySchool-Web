@@ -1,6 +1,7 @@
 // src/sections/Features.jsx
 import { useState } from 'react'
 import { Check, Monitor } from 'lucide-react'
+import featurePreview from '@/assets/images/thumbnail/sage-mint.webp'
 import * as LucideIcons from 'lucide-react'
 import clsx from 'clsx'
 import SectionWrapper from '@/components/shared/SectionWrapper'
@@ -178,7 +179,7 @@ const Features = () => {
             {/* Mockup content */}
             <div className="relative">
               <img
-                src="https://placehold.co/600x500/f0f4fa/1a3c6e?text=Website+Sekolah+Preview"
+                src={featurePreview}
                 alt="Preview website sekolah"
                 className="w-full"
               />

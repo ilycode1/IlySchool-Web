@@ -61,7 +61,7 @@ const TestimonialCard = ({ testimonial, isActive }) => (
         : 'opacity-0 translate-x-8 pointer-events-none'
     )}
   >
-    <div className="h-full flex flex-col justify-between">
+    <div className="h-full flex flex-col justify-between p-10">
       {/* Quote icon */}
       <Quote
         size={40}
@@ -273,23 +273,6 @@ const Testimonials = () => {
                   <ChevronRight size={16} />
                 </button>
               </div>
-
-              {/* Progress dots */}
-              {/* <div className="absolute bottom-6 left-8 flex gap-1.5">
-                {TESTIMONIALS.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => goTo(i)}
-                    className={clsx(
-                      'rounded-full transition-all duration-300',
-                      i === currentIndex
-                        ? 'w-6 h-2 bg-primary'
-                        : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
-                    )}
-                    aria-label={`Testimoni ${i + 1}`}
-                  />
-                ))}
-              </div> */}
             </div>
 
             {/* Rating summary */}

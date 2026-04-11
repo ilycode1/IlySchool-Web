@@ -101,7 +101,7 @@ export const MAIN_FEATURES = [
     id: 'ssl',
     group: 'Teknis & Keamanan',
     icon: 'Shield',
-    title: "SSL Let's Encrypt Gratis",
+    title: 'SSL  Gratis',
     description:
       'Website sekolah Anda aman dengan enkripsi HTTPS — tidak ada biaya tambahan.',
   },
@@ -150,7 +150,7 @@ export const PRODUCT_PILLARS = [
     icon: 'Palette',
     title: 'Desain Profesional',
     description:
-      '15 pilihan template yang dirancang khusus untuk berbagai jenis sekolah di Indonesia.',
+      '10 pilihan template yang dirancang khusus untuk berbagai jenis sekolah di Indonesia.',
     color: 'primary',
   },
   {
@@ -166,7 +166,7 @@ export const PRODUCT_PILLARS = [
     icon: 'ShieldCheck',
     title: 'Aman & Terpercaya',
     description:
-      "SSL Let's Encrypt gratis di semua paket. Data sekolah Anda terlindungi penuh.",
+      'SSL  gratis di semua paket. Data sekolah Anda terlindungi penuh.',
     color: 'accent',
   },
   {
@@ -215,7 +215,7 @@ export const FEATURE_GROUPS = [
     title: 'Teknis & Keamanan',
     icon: 'Shield',
     items: [
-      "SSL Let's Encrypt (https://)",
+      'SSL  (https://)',
       'Responsif di semua perangkat',
       'Tombol WhatsApp langsung',
       'Embed Google Maps',

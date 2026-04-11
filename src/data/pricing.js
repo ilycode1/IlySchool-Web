@@ -20,7 +20,7 @@ export const PRICING_PLANS = [
     features: [
       { text: 'Website HTML/CSS/JS profesional', included: true },
       { text: 'Subdomain gratis (namasekolah.ilyschool.com)', included: true },
-      { text: "SSL Let's Encrypt (https://)", included: true },
+      { text: 'SSL  (https://)', included: true },
       { text: '10 pilihan template desain', included: true },
       { text: '12x perubahan konten per tahun', included: true },
       { text: 'Perubahan tambahan Rp 50.000/request', included: true },
@@ -50,7 +50,7 @@ export const PRICING_PLANS = [
     features: [
       { text: 'Semua fitur Paket Hadir', included: true },
       { text: 'Domain resmi .sch.id', included: true },
-      { text: "SSL Let's Encrypt (https://)", included: true },
+      { text: 'SSL  (https://)', included: true },
       { text: 'CMS — kelola konten mandiri', included: true },
       { text: '10 pilihan template desain', included: true },
       { text: '12x perubahan konten per tahun', included: true },
@@ -79,7 +79,7 @@ export const PRICING_PLANS = [
     features: [
       { text: 'Semua fitur Paket Aktif', included: true },
       { text: 'Domain resmi .sch.id', included: true },
-      { text: "SSL Let's Encrypt (https://)", included: true },
+      { text: 'SSL  (https://)', included: true },
       { text: 'CMS lengkap & fleksibel', included: true },
       { text: '10 pilihan template desain', included: true },
       { text: '12x perubahan konten per tahun', included: true },

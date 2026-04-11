@@ -20,32 +20,39 @@ import { GFORM_URL } from '@/config/constants'
 const SLIDES = [
   {
     id: 0,
+    image: '/src/assets/images/thumbnail/royal-blue.webp',
     bgColor: '#1a3c6e',
     label: 'SMA & SMP Negeri',
     headline: 'Website Resmi Sekolah',
     highlight: 'Mulai Rp 100.000',
     sub: 'per Tahun',
+    desc: 'Ratusan sekolah masih belum punya website — atau punya tapi terbengkalai. ilyschool hadir untuk mengubah itu. Tampil profesional, dikelola mudah, harga termurah.',
   },
   {
     id: 1,
     bgColor: '#1b5e3b',
+    image: '/src/assets/images/thumbnail/green-forest.webp',
     label: 'Madrasah & Pesantren',
     headline: 'Hadir Digital dengan',
     highlight: 'Tampilan Islami',
     sub: 'Profesional & Terpercaya',
+    desc: 'Tampilkan nilai-nilai keislaman sekolah Anda secara digital. Desain yang mencerminkan identitas, bukan sekadar website biasa.',
   },
   {
     id: 2,
     bgColor: '#0f6e75',
+    image: '/src/assets/images/thumbnail/ocean-teal.webp',
     label: 'SD, SMK & Semua Jenjang',
     headline: 'Website Jadi dalam',
     highlight: '3 Hari Kerja',
     sub: 'Tanpa Keahlian Coding',
+    desc: 'Tidak perlu tahu coding, tidak perlu tunggu berbulan-bulan. Kami yang kerjakan, Anda tinggal terima jadi.',
   },
 ]
 
 // ── FLOATING BADGE ─────────────────────────────────────────────
 // Kartu kecil dekoratif yang "mengambang" di hero
+// eslint-disable-next-line no-unused-vars
 const FloatingBadge = ({ icon: Icon, text, subtext, className }) => (
   <div
     className={clsx(
@@ -156,9 +163,7 @@ const Hero = () => {
                 key={`desc-${currentSlide}`}
                 className="text-white/70 text-lg leading-relaxed max-w-lg animate-fade-up"
               >
-                Ratusan sekolah masih belum punya website — atau punya tapi
-                terbengkalai. ilyschool hadir untuk mengubah itu. Tampil
-                profesional, dikelola mudah, harga yang tidak memberatkan.
+                {slide.desc}
               </p>
 
               {/* CTA Buttons */}
@@ -184,6 +189,7 @@ const Hero = () => {
                   { icon: Shield, text: 'SSL Gratis' },
                   { icon: Star, text: 'Rating 4.9/5' },
                   { icon: Zap, text: 'Jadi 3 Hari' },
+                  // eslint-disable-next-line no-unused-vars
                 ].map(({ icon: Icon, text }) => (
                   <div
                     key={text}
@@ -218,11 +224,11 @@ const Hero = () => {
 
                 {/* Browser content placeholder */}
                 <div
-                  className="rounded-b-xl overflow-hidden"
+                  className="rounded-b-xl overflow-hidden border-x-2 border-b-2 border-white/30"
                   style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}
                 >
                   <img
-                    src="https://placehold.co/600x400/ffffff/1a3c6e?text=Preview+Website+Sekolah"
+                    src={slide.image}
                     alt="Preview website sekolah"
                     className="w-full"
                   />

@@ -168,10 +168,9 @@ const PainPoint = () => {
         </div>
 
         <p className="text-gray-600 text-lg leading-relaxed">
-          ilyschool adalah solusi yang dibuat khusus untuk menjawab ketiga
-          masalah itu —{' '}
+          Kami membangun ilyschool dengan satu tujuan:{' '}
           <span className="font-semibold text-primary">
-            dengan harga yang bisa dianggarkan sekolah mana pun.
+            setiap sekolah berhak tampil profesional di internet, tanpa harus mahal.
           </span>
         </p>
       </div>

@@ -17,7 +17,7 @@ export const BLOG_POSTS = [
     author: 'Tim ilyschool',
     publishedAt: '2026-03-10',
     readTime: 5,
-    thumbnail: '/src/assets/images/blog/blog1.webp',
+    thumbnail: '/images/blog/blog1.webp',
     tags: ['website sekolah', 'digital', 'tips'],
     // SEO
     metaTitle: 'Kenapa Sekolah Harus Punya Website? | ilyschool Blog',
@@ -86,7 +86,7 @@ export const BLOG_POSTS = [
     author: 'Tim ilyschool',
     publishedAt: '2026-03-20',
     readTime: 6,
-    thumbnail: '/src/assets/images/blog/blog2.webp',
+    thumbnail: '/images/blog/blog2.webp',
     tags: ['konten', 'website sekolah', 'tips'],
     metaTitle: '7 Konten Wajib Website Sekolah | ilyschool Blog',
     metaDescription:
@@ -169,7 +169,7 @@ export const BLOG_POSTS = [
     author: 'Tim ilyschool',
     publishedAt: '2026-04-01',
     readTime: 4,
-    thumbnail: '/src/assets/images/blog/blog3.webp',
+    thumbnail: '/images/blog/blog3.webp',
     tags: ['domain', 'website sekolah', 'edukasi'],
     metaTitle: 'Domain .sch.id vs Subdomain untuk Sekolah | ilyschool Blog',
     metaDescription:

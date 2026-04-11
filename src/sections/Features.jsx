@@ -1,7 +1,7 @@
 // src/sections/Features.jsx
 import { useState } from 'react'
 import { Check, Monitor } from 'lucide-react'
-import featurePreview from '@/assets/images/thumbnail/sage-mint.webp'
+const featurePreview = '/images/thumbnail/sage-mint.webp'
 import * as LucideIcons from 'lucide-react'
 import clsx from 'clsx'
 import SectionWrapper from '@/components/shared/SectionWrapper'

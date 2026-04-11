@@ -20,7 +20,7 @@ import { GFORM_URL } from '@/config/constants'
 const SLIDES = [
   {
     id: 0,
-    image: '/images/thumbnail/royal-blue.webp',
+    image: '/assets/images/thumbnail/royal-blue.webp',
     bgColor: '#1a3c6e',
     label: 'SMA & SMP Negeri',
     headline: 'Website Resmi Sekolah',
@@ -31,7 +31,7 @@ const SLIDES = [
   {
     id: 1,
     bgColor: '#1b5e3b',
-    image: '/images/thumbnail/green-forest.webp',
+    image: '/assets/images/thumbnail/green-forest.webp',
     label: 'Madrasah & Pesantren',
     headline: 'Hadir Digital dengan',
     highlight: 'Tampilan Islami',
@@ -41,7 +41,7 @@ const SLIDES = [
   {
     id: 2,
     bgColor: '#0f6e75',
-    image: '/images/thumbnail/ocean-teal.webp',
+    image: '/assets/images/thumbnail/ocean-teal.webp',
     label: 'SD, SMK & Semua Jenjang',
     headline: 'Website Jadi dalam',
     highlight: '3 Hari Kerja',

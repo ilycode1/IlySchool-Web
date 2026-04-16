@@ -8,7 +8,8 @@ export const BRAND_DOMAIN = 'ilyschool.com'
 // KONTAK
 export const WHATSAPP_NUMBER = import.meta.env.VITE_WA_NUMBER || '6285178226071'
 export const GFORM_URL =
-  import.meta.env.VITE_GFORM_URL || 'https://forms.gle/7Qjb7qdEku6ZuSHH6'
+  import.meta.env.VITE_GFORM_URL ||
+  'https://forms.gle/https://forms.gle/1uBfy1Hj3ci7Vj6E9'
 export const EMAIL = import.meta.env.VITE_EMAIL || 'ilycode2@gmail.com'
 
 // SOCIAL MEDIA

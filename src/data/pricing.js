@@ -19,10 +19,10 @@ export const PRICING_PLANS = [
 
     features: [
       { text: 'Website profesional', included: true },
-      { text: 'Domain Custom (namasekolah.my.id', included: true },
+      { text: 'Domain Custom (namasekolah.my.id)', included: true },
       { text: 'Secure Socket Layer (SSL)', included: true },
       { text: '10 pilihan template desain', included: true },
-      { text: 'Perubahan tambahan Rp 50.000/request', included: true },
+      { text: '12x perubahan konten per tahun', included: true },
       { text: 'Domain .sch.id', included: false },
       { text: 'CMS — kelola konten mandiri', included: false },
       { text: 'Layanan tambahan (PPDB, dll)', included: false },

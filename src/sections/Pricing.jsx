@@ -124,7 +124,13 @@ const PricingCard = ({ plan, index, isInView }) => {
             >
               {formatRupiah(plan.originalPrice)}
             </span>
-            <Badge variant={plan.popular ? 'white' : 'accent'} size="sm">
+            <Badge
+              variant="warning"
+              size="sm"
+              className={
+                plan.popular ? '!bg-white/15 !text-white !border-white/30' : ''
+              }
+            >
               Hemat {discountPercent}%
             </Badge>
           </div>

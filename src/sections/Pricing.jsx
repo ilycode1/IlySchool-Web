@@ -184,7 +184,7 @@ const PricingCard = ({ plan, index, isInView }) => {
             <ArrowRight size={16} />
           </Button>
 
-          {/* Extra charge info */}
+          {/* Extra charge info
           <p className="text-center text-xs text-gray-400 mt-3">
             Perubahan tambahan:{' '}
             {plan.id === 'hadir'
@@ -193,7 +193,7 @@ const PricingCard = ({ plan, index, isInView }) => {
                 ? 'Rp 70.000'
                 : 'Rp 90.000'}
             /request
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

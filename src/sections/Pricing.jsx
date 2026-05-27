@@ -147,7 +147,7 @@ const PricingCard = ({ plan, index, isInView }) => {
               : 'bg-surface border-gray-100'
           )}
         >
-          <p className="text-sm text-gray-600 italic">"{plan.tagline}"</p>
+          <p className="text-sm text-gray-600 italic">&ldquo;{plan.tagline}&rdquo;</p>
         </div>
 
         {/* ── FEATURES LIST ────────────────────────────────── */}

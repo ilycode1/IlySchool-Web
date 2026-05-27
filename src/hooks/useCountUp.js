@@ -42,7 +42,6 @@ const useCountUp = ({
     if (!isActive) return
 
     // Reset ke 0 setiap kali animasi dimulai ulang
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCount(0)
     startTimeRef.current = null
 

@@ -73,7 +73,7 @@ const TestimonialCard = ({ testimonial, isActive }) => (
 
       {/* Kutipan */}
       <p className="text-gray-600 text-lg leading-relaxed italic flex-1 mb-6">
-        "{testimonial.quote}"
+        &ldquo;{testimonial.quote}&rdquo;
       </p>
 
       {/* Rating */}

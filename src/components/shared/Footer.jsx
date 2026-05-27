@@ -1,3 +1,5 @@
+'use client'
+
 // src/components/shared/Footer.jsx
 import { Globe } from 'lucide-react'
 import clsx from 'clsx'

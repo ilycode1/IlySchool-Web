@@ -1,6 +1,4 @@
-// src/pages/Home.jsx
-// Halaman utama — wrapper untuk semua section landing page
-// Dipisah dari App.jsx agar routing lebih bersih
+'use client'
 
 import useScrollspy from '@/hooks/useScrollspy'
 import {
@@ -16,8 +14,7 @@ import {
   FinalCTA,
 } from '@/sections'
 
-const Home = () => {
-  // Aktifkan scrollspy di halaman ini
+export default function HomeClient() {
   useScrollspy()
 
   return (
@@ -35,5 +32,3 @@ const Home = () => {
     </main>
   )
 }
-
-export default Home

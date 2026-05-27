@@ -1,3 +1,5 @@
+'use client'
+
 // src/components/ui/AnimatedSection.jsx
 // Wrapper komponen untuk animasi saat masuk viewport
 // Menggantikan pattern useInView + clsx manual yang berulang

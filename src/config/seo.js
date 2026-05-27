@@ -1,6 +1,6 @@
 // src/config/seo.js
 // Konfigurasi SEO per halaman
-// Dipakai bersama react-helmet-async
+// Dipakai oleh Next.js metadata API di src/app/*/page.jsx
 
 export const SEO_CONFIG = {
   // ── HALAMAN UTAMA ──────────────────────────────────────────
@@ -13,7 +13,7 @@ export const SEO_CONFIG = {
     ogTitle: 'ilyschool — Website Sekolah Profesional',
     ogDescription:
       'Website company profile untuk sekolah Indonesia. Mulai Rp 100.000/tahun. Jadi dalam 3 hari kerja.',
-    ogImage: '/og-image.jpg',
+    ogImage: '/ilyschool.png',
     canonical: 'https://ilyschool.com',
   },
 
@@ -36,7 +36,7 @@ export const SEO_CONFIG = {
     keywords: post.tags.join(', '),
     ogTitle: post.title,
     ogDescription: post.excerpt,
-    ogImage: post.thumbnail || '/og-image.jpg',
+    ogImage: post.thumbnail || '/ilyschool.png',
     canonical: `https://ilyschool.com/blog/${post.slug}`,
   }),
 
@@ -72,5 +72,5 @@ export const SEO_CONFIG = {
 export const DEFAULT_SEO = {
   title: 'ilyschool — Website Sekolah Profesional',
   description: 'Platform website company profile khusus sekolah Indonesia.',
-  ogImage: '/og-image.jpg',
+  ogImage: '/ilyschool.png',
 }

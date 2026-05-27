@@ -1,3 +1,5 @@
+'use client'
+
 // src/sections/FinalCTA.jsx
 import { ArrowRight } from 'lucide-react'
 

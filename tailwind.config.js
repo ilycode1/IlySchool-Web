@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,jsx}'],
+  content: [
+    './src/app/**/*.{js,jsx}',
+    './src/components/**/*.{js,jsx}',
+    './src/sections/**/*.{js,jsx}',
+    './src/pages/**/*.{js,jsx}',
+  ],
   theme: {
     extend: {
       colors: {
@@ -19,21 +24,17 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['Poppins', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
+        heading: ['var(--font-poppins)', 'sans-serif'],
+        body: ['var(--font-inter)', 'sans-serif'],
       },
       screens: {
-        xs: '475px', // ← untuk device sangat kecil
+        xs: '475px',
       },
-
-      // Tambahkan spacing custom
       spacing: {
         18: '4.5rem',
         88: '22rem',
         128: '32rem',
       },
-
-      // Tambahkan max-width custom
       maxWidth: {
         '8xl': '88rem',
         '9xl': '96rem',

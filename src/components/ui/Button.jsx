@@ -1,3 +1,5 @@
+'use client'
+
 // src/components/ui/Button.jsx
 import { forwardRef } from 'react'
 import clsx from 'clsx'

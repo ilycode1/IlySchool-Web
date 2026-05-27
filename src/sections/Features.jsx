@@ -1,3 +1,5 @@
+'use client'
+
 // src/sections/Features.jsx
 import { useState } from 'react'
 import { Check, Monitor } from 'lucide-react'

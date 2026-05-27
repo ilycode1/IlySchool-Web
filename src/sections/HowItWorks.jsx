@@ -1,3 +1,5 @@
+'use client'
+
 // src/sections/HowItWorks.jsx
 import * as LucideIcons from 'lucide-react'
 import clsx from 'clsx'

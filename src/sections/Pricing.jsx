@@ -1,3 +1,5 @@
+'use client'
+
 // src/sections/Pricing.jsx
 import { Check, X, ArrowRight } from 'lucide-react'
 import clsx from 'clsx'
@@ -269,7 +271,7 @@ const Pricing = () => {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button
               variant="primary"
-              href={`https://wa.me/${import.meta.env.VITE_WA_NUMBER || '6285178226071'}?text=${encodeURIComponent('Halo ilyschool, saya belum yakin pilih paket mana. Bisa bantu rekomendasikan?')}`}
+              href={`https://wa.me/${process.env.NEXT_PUBLIC_WA_NUMBER || '6285178226071'}?text=${encodeURIComponent('Halo ilyschool, saya belum yakin pilih paket mana. Bisa bantu rekomendasikan?')}`}
               external
             >
               Tanya via WhatsApp

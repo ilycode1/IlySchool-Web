@@ -1,3 +1,5 @@
+'use client'
+
 // src/components/shared/WhatsAppButton.jsx
 import { useEffect, useState } from 'react'
 import { X } from 'lucide-react'

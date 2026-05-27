@@ -1,5 +1,8 @@
+'use client'
+
 // src/sections/TemplateShowcase.jsx
 import { useState, useMemo } from 'react'
+import { useRouter } from 'next/navigation'
 import { Eye, ArrowRight } from 'lucide-react'
 import clsx from 'clsx'
 import SectionWrapper from '@/components/shared/SectionWrapper'
@@ -9,7 +12,6 @@ import Button from '@/components/ui/Button'
 import useInView from '@/hooks/useInView'
 import { TEMPLATES } from '@/data/templates'
 import { generateWALinkByTemplate } from '@/utils/formatWhatsApp'
-import { useNavigate } from 'react-router-dom'
 
 // ── FILTER CATEGORIES ──────────────────────────────────────────
 const FILTERS = [
@@ -25,7 +27,7 @@ const FILTERS = [
 // ── TEMPLATE CARD ──────────────────────────────────────────────
 const TemplateCard = ({ template, index, isInView }) => {
   const [isHovered, setIsHovered] = useState(false)
-  const navigate = useNavigate()
+  const router = useRouter()
 
   return (
     <div
@@ -89,7 +91,7 @@ const TemplateCard = ({ template, index, isInView }) => {
         >
           {/* Tombol lihat detail */}
           <button
-            onClick={() => navigate(`/template/${template.id}`)}
+            onClick={() => router.push(`/template/${template.id}`)}
             className={clsx(
               'flex items-center gap-2',
               'bg-white text-primary',
@@ -274,7 +276,7 @@ const TemplateShowcase = () => {
           <Button
             variant="primary"
             size="lg"
-            href={`https://wa.me/${import.meta.env.VITE_WA_NUMBER || '6285178226071'}?text=${encodeURIComponent('Halo ilyschool, saya mau konsultasi pilih template yang cocok untuk sekolah kami.')}`}
+            href={`https://wa.me/${process.env.NEXT_PUBLIC_WA_NUMBER || '6285178226071'}?text=${encodeURIComponent('Halo ilyschool, saya mau konsultasi pilih template yang cocok untuk sekolah kami.')}`}
             external
           >
             Konsultasi Pilih Template

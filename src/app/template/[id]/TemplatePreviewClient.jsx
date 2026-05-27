@@ -1,20 +1,12 @@
-// src/pages/TemplatePreview.jsx
-// Halaman preview detail satu template
-// Diakses via URL: /template/:id
-// Contoh: /template/royal-blue
+'use client'
 
-import { useParams, useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { ArrowLeft, ExternalLink, Eye } from 'lucide-react'
 import clsx from 'clsx'
 import Button from '@/components/ui/Button'
 import Badge from '@/components/ui/Badge'
-import { getTemplateById, TEMPLATES } from '@/data/templates'
 import { generateWALinkByTemplate } from '@/utils/formatWhatsApp'
-import { Helmet } from 'react-helmet-async'
-import { SEO_CONFIG } from '@/config/seo'
 
-// ── RELATED TEMPLATE CARD ──────────────────────────────────────
-// Card template lain yang ditampilkan di bagian bawah
 const RelatedCard = ({ template, onClick }) => (
   <div
     onClick={onClick}
@@ -42,69 +34,22 @@ const RelatedCard = ({ template, onClick }) => (
   </div>
 )
 
-const TemplatePreview = () => {
-  // Ambil id dari URL parameter
-  const { id } = useParams()
-  const navigate = useNavigate()
-
-  // Cari template berdasarkan id
-  const template = getTemplateById(id)
-
-  // Kalau template tidak ditemukan → tampilkan halaman not found
-  if (!template) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <p className="font-heading text-6xl font-bold text-gray-200 mb-4">
-            404
-          </p>
-          <p className="font-heading font-semibold text-gray-700 mb-2">
-            Template tidak ditemukan
-          </p>
-          <p className="text-gray-500 text-sm mb-6">
-            Template dengan id "{id}" tidak ada.
-          </p>
-          <Button variant="primary" onClick={() => navigate('/')}>
-            Kembali ke Beranda
-          </Button>
-        </div>
-      </div>
-    )
-  }
-
-  // Template lain — exclude yang sedang dilihat, ambil 3
-  const seo = SEO_CONFIG.templatePreview(template)
-  const relatedTemplates = TEMPLATES.filter((t) => t.id !== template.id).slice(
-    0,
-    3
-  )
+export default function TemplatePreviewClient({ template, related }) {
+  const router = useRouter()
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* ── SEO META TAGS ─────────────────────────────────── */}
-      <Helmet>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-        <meta name="keywords" content={seo.keywords} />
-        <meta property="og:title" content={seo.ogTitle} />
-        <meta property="og:description" content={seo.ogDescription} />
-        <meta property="og:image" content={seo.ogImage} />
-        <link rel="canonical" href={seo.canonical} />
-      </Helmet>
-      {/* ── TOP BAR ─────────────────────────────────────────── */}
       <div className="bg-white border-b border-gray-100 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Back button */}
             <button
-              onClick={() => navigate(-1)}
+              onClick={() => router.back()}
               className="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors"
             >
               <ArrowLeft size={18} />
               <span className="text-sm font-heading font-medium">Kembali</span>
             </button>
 
-            {/* Template info */}
             <div className="flex items-center gap-3">
               <span className="font-heading font-semibold text-gray-800">
                 Template {template.name}
@@ -116,7 +61,6 @@ const TemplatePreview = () => {
               )}
             </div>
 
-            {/* CTA */}
             <div className="flex items-center gap-2">
               <Button
                 variant="outline"
@@ -141,21 +85,16 @@ const TemplatePreview = () => {
         </div>
       </div>
 
-      {/* ── MAIN CONTENT ────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          {/* ── KOLOM KIRI: Preview ──────────────────────────── */}
           <div className="lg:col-span-2">
-            {/* Browser mockup frame */}
             <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200">
-              {/* Browser chrome */}
               <div className="bg-gray-800 px-4 py-3 flex items-center gap-3">
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-red-400" />
                   <div className="w-3 h-3 rounded-full bg-yellow-400" />
                   <div className="w-3 h-3 rounded-full bg-green-400" />
                 </div>
-                {/* URL bar */}
                 <div className="flex-1 bg-gray-700 rounded-md px-3 py-1.5 flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-green-400/60 flex-shrink-0" />
                   <span className="text-xs text-gray-400 font-mono truncate">
@@ -164,7 +103,6 @@ const TemplatePreview = () => {
                 </div>
               </div>
 
-              {/* Preview iframe */}
               <iframe
                 src={template.previewUrl}
                 title={`Preview ${template.name}`}
@@ -172,7 +110,6 @@ const TemplatePreview = () => {
               />
             </div>
 
-            {/* Color palette */}
             <div className="mt-6 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
               <h3 className="font-heading font-semibold text-gray-800 mb-4 text-sm uppercase tracking-wider">
                 Palet Warna Template
@@ -193,9 +130,7 @@ const TemplatePreview = () => {
             </div>
           </div>
 
-          {/* ── KOLOM KANAN: Info ────────────────────────────── */}
           <div className="flex flex-col gap-6">
-            {/* Template info card */}
             <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
               <div className="flex items-start justify-between mb-4">
                 <div>
@@ -215,7 +150,6 @@ const TemplatePreview = () => {
                 {template.description}
               </p>
 
-              {/* Cocok untuk */}
               <div className="mb-6">
                 <p className="text-xs font-heading font-semibold text-gray-400 uppercase tracking-wider mb-2">
                   Cocok untuk
@@ -229,7 +163,6 @@ const TemplatePreview = () => {
                 </div>
               </div>
 
-              {/* CTA */}
               <Button
                 variant="primary"
                 fullWidth
@@ -245,7 +178,6 @@ const TemplatePreview = () => {
               </p>
             </div>
 
-            {/* Info box */}
             <div className="bg-surface rounded-2xl p-5 border border-gray-100">
               <h4 className="font-heading font-semibold text-gray-800 text-sm mb-3">
                 Yang Anda Dapatkan
@@ -268,17 +200,16 @@ const TemplatePreview = () => {
           </div>
         </div>
 
-        {/* ── RELATED TEMPLATES ───────────────────────────────── */}
         <div className="mt-16">
           <h3 className="font-heading font-semibold text-gray-800 text-lg mb-6">
             Template Lainnya
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {relatedTemplates.map((t) => (
+            {related.map((t) => (
               <RelatedCard
                 key={t.id}
                 template={t}
-                onClick={() => navigate(`/template/${t.id}`)}
+                onClick={() => router.push(`/template/${t.id}`)}
               />
             ))}
           </div>
@@ -287,5 +218,3 @@ const TemplatePreview = () => {
     </div>
   )
 }
-
-export default TemplatePreview

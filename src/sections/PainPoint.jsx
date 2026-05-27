@@ -1,3 +1,5 @@
+'use client'
+
 // src/sections/PainPoint.jsx
 import { FileText, SearchX, AlertTriangle } from 'lucide-react'
 import clsx from 'clsx'

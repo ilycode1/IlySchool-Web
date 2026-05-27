@@ -6,22 +6,23 @@ export const PARENT_BRAND = 'IlyCode Softwarelabs'
 export const BRAND_DOMAIN = 'ilyschool.com'
 
 // KONTAK
-export const WHATSAPP_NUMBER = import.meta.env.VITE_WA_NUMBER || '6285178226071'
+export const WHATSAPP_NUMBER =
+  process.env.NEXT_PUBLIC_WA_NUMBER || '6285178226071'
 export const GFORM_URL =
-  import.meta.env.VITE_GFORM_URL || 'https://forms.gle/nxRtMf6KeTod46ix8'
-export const EMAIL = import.meta.env.VITE_EMAIL || 'ilycode2@gmail.com'
+  process.env.NEXT_PUBLIC_GFORM_URL || 'https://forms.gle/nxRtMf6KeTod46ix8'
+export const EMAIL = process.env.NEXT_PUBLIC_EMAIL || 'ilycode2@gmail.com'
 
 // SOCIAL MEDIA
 export const SOCIAL_MEDIA = {
   instagram:
-    import.meta.env.VITE_INSTAGRAM || 'https://www.instagram.com/ilycode_/',
+    process.env.NEXT_PUBLIC_INSTAGRAM || 'https://www.instagram.com/ilycode_/',
   tiktok:
-    import.meta.env.VITE_TIKTOK ||
+    process.env.NEXT_PUBLIC_TIKTOK ||
     'https://www.tiktok.com/@ily_code?lang=id-ID',
   youtube:
-    import.meta.env.VITE_YOUTUBE ||
+    process.env.NEXT_PUBLIC_YOUTUBE ||
     'https://youtube.com/@ilycode-z4f?si=_zzrxAcWmQOnnmM',
-  website: import.meta.env.VITE_WEBSITE || `https://ilycode.my.id`,
+  website: process.env.NEXT_PUBLIC_WEBSITE || `https://ilycode.my.id`,
 }
 
 // PESAN WHATSAPP DEFAULT

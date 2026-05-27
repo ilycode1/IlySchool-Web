@@ -1,3 +1,5 @@
+'use client'
+
 // src/components/shared/Navbar.jsx
 import { useEffect } from 'react'
 import { Menu, X } from 'lucide-react'

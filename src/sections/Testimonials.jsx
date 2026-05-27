@@ -1,3 +1,5 @@
+'use client'
+
 // src/sections/Testimonials.jsx
 import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'

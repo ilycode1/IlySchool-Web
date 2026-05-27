@@ -1,13 +1,11 @@
-// src/pages/BlogDetail.jsx
-import { useParams, Link, Navigate } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+'use client'
+
+import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, Tag } from 'lucide-react'
 import clsx from 'clsx'
-import { getPostBySlug, getAllPosts, formatDate } from '@/data/blog'
-import { BRAND_NAME, SOCIAL_MEDIA } from '@/config/constants'
+import { formatDate } from '@/data/blog'
+import { SOCIAL_MEDIA } from '@/config/constants'
 
-// ── RENDERER KONTEN ────────────────────────────────────────────
-// Render tiap blok konten dari array post.content
 const ContentBlock = ({ block }) => {
   switch (block.type) {
     case 'heading':
@@ -26,7 +24,10 @@ const ContentBlock = ({ block }) => {
       return (
         <ul className="mb-5 flex flex-col gap-2">
           {block.items.map((item, i) => (
-            <li key={i} className="flex items-start gap-3 text-gray-600 text-base sm:text-lg leading-relaxed">
+            <li
+              key={i}
+              className="flex items-start gap-3 text-gray-600 text-base sm:text-lg leading-relaxed"
+            >
               <span className="mt-1.5 w-2 h-2 rounded-full bg-primary flex-shrink-0" />
               {item}
             </li>
@@ -36,7 +37,9 @@ const ContentBlock = ({ block }) => {
     case 'closing':
       return (
         <div className="mt-10 p-6 bg-primary/5 border-l-4 border-primary rounded-r-2xl">
-          <p className="text-primary font-medium leading-relaxed">{block.text}</p>
+          <p className="text-primary font-medium leading-relaxed">
+            {block.text}
+          </p>
         </div>
       )
     default:
@@ -44,12 +47,9 @@ const ContentBlock = ({ block }) => {
   }
 }
 
-// ── CARD ARTIKEL TERKAIT ───────────────────────────────────────
 const RelatedCard = ({ post }) => (
   <Link
-    to={`/blog/${post.slug}`}
-    target="_blank"
-    rel="noopener noreferrer"
+    href={`/blog/${post.slug}`}
     className={clsx(
       'group flex gap-4 p-4 rounded-xl bg-white border border-gray-100',
       'hover:border-primary/30 hover:shadow-md transition-all duration-200'
@@ -57,7 +57,11 @@ const RelatedCard = ({ post }) => (
   >
     <div className="w-20 h-20 rounded-lg bg-primary/10 flex-shrink-0 overflow-hidden">
       {post.thumbnail ? (
-        <img src={post.thumbnail} alt={post.title} className="w-full h-full object-cover" />
+        <img
+          src={post.thumbnail}
+          alt={post.title}
+          className="w-full h-full object-cover"
+        />
       ) : (
         <div className="w-full h-full flex items-center justify-center">
           <span className="font-heading font-bold text-2xl text-primary/20">
@@ -67,82 +71,47 @@ const RelatedCard = ({ post }) => (
       )}
     </div>
     <div className="flex-1 min-w-0">
-      <p className="text-xs text-primary font-heading font-semibold mb-1">{post.category}</p>
+      <p className="text-xs text-primary font-heading font-semibold mb-1">
+        {post.category}
+      </p>
       <h3 className="font-heading font-semibold text-gray-800 text-sm leading-snug group-hover:text-primary transition-colors line-clamp-2">
         {post.title}
       </h3>
-      <p className="text-xs text-gray-400 mt-1">{formatDate(post.publishedAt)}</p>
+      <p className="text-xs text-gray-400 mt-1">
+        {formatDate(post.publishedAt)}
+      </p>
     </div>
   </Link>
 )
 
-// ── HALAMAN DETAIL ─────────────────────────────────────────────
-const BlogDetail = () => {
-  const { slug } = useParams()
-  const post = getPostBySlug(slug)
-
-  // Redirect ke 404 kalau slug tidak ditemukan
-  if (!post) return <Navigate to="/not-found" replace />
-
-  const allPosts = getAllPosts()
-  const related = allPosts.filter((p) => p.slug !== slug).slice(0, 3)
+export default function BlogDetailContent({ post, related }) {
+  const handleShare = () => {
+    const url =
+      typeof window !== 'undefined' ? window.location.href : ''
+    const text = encodeURIComponent(`${post.title} — ${url}`)
+    window.open(`https://wa.me/?text=${text}`, '_blank', 'noopener,noreferrer')
+  }
 
   return (
     <>
-      <Helmet>
-        <title>{post.metaTitle || `${post.title} | ${BRAND_NAME}`}</title>
-        <meta name="description" content={post.metaDescription || post.excerpt} />
-        <meta name="keywords" content={post.tags.join(', ')} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
-        {post.thumbnail && <meta property="og:image" content={post.thumbnail} />}
-        <meta property="og:type" content="article" />
-        <link rel="canonical" href={`https://ilyschool.com/blog/${post.slug}`} />
-        {/* JSON-LD Article Schema — membantu Google memahami konten */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: post.title,
-            description: post.excerpt,
-            author: { '@type': 'Organization', name: post.author },
-            publisher: {
-              '@type': 'Organization',
-              name: BRAND_NAME,
-              url: 'https://ilyschool.com',
-            },
-            datePublished: post.publishedAt,
-            image: post.thumbnail || '',
-            url: `https://ilyschool.com/blog/${post.slug}`,
-          })}
-        </script>
-      </Helmet>
-
-      {/* ── HERO ──────────────────────────────────────────────── */}
       <section className="bg-primary pt-28 pb-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
           <Link
-            to="/blog"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/blog"
             className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm font-heading mb-6 transition-colors"
           >
             <ArrowLeft size={14} />
             Kembali ke Blog
           </Link>
 
-          {/* Category */}
           <span className="inline-block bg-accent text-gray-900 text-xs font-heading font-bold px-3 py-1 rounded-full mb-4">
             {post.category}
           </span>
 
-          {/* Title */}
           <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
             {post.title}
           </h1>
 
-          {/* Meta */}
           <div className="flex flex-wrap items-center gap-4 text-white/60 text-sm">
             <span className="flex items-center gap-1.5">
               <Calendar size={14} />
@@ -157,7 +126,6 @@ const BlogDetail = () => {
         </div>
       </section>
 
-      {/* ── THUMBNAIL ─────────────────────────────────────────── */}
       {post.thumbnail && (
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10">
           <img
@@ -168,23 +136,17 @@ const BlogDetail = () => {
         </div>
       )}
 
-      {/* ── BODY ──────────────────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-
-          {/* ── KONTEN UTAMA ────────────────────────────────── */}
           <article className="lg:col-span-2">
-            {/* Excerpt highlight */}
             <p className="text-lg sm:text-xl text-gray-700 font-medium leading-relaxed mb-8 pb-8 border-b border-gray-100">
               {post.excerpt}
             </p>
 
-            {/* Content blocks */}
             {post.content.map((block, i) => (
               <ContentBlock key={i} block={block} />
             ))}
 
-            {/* Tags */}
             <div className="flex flex-wrap gap-2 mt-10 pt-8 border-t border-gray-100">
               {post.tags.map((tag) => (
                 <span
@@ -197,7 +159,6 @@ const BlogDetail = () => {
               ))}
             </div>
 
-            {/* Share CTA */}
             <div className="mt-10 p-6 bg-primary rounded-2xl text-center">
               <p className="text-white font-heading font-semibold text-lg mb-2">
                 Artikel ini bermanfaat?
@@ -205,22 +166,17 @@ const BlogDetail = () => {
               <p className="text-white/70 text-sm mb-5">
                 Bagikan ke rekan guru atau kepala sekolah yang membutuhkan.
               </p>
-              <a
-                href={`https://wa.me/?text=${encodeURIComponent(`${post.title} — ${window.location.href}`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={handleShare}
                 className="inline-flex items-center gap-2 bg-accent text-gray-900 font-heading font-semibold text-sm px-6 py-3 rounded-xl hover:opacity-90 transition-opacity"
               >
                 Bagikan via WhatsApp
-              </a>
+              </button>
             </div>
           </article>
 
-          {/* ── SIDEBAR ──────────────────────────────────────── */}
           <aside className="lg:col-span-1">
             <div className="sticky top-24 flex flex-col gap-6">
-
-              {/* Artikel terkait */}
               <div className="bg-gray-50 rounded-2xl p-6">
                 <h3 className="font-heading font-bold text-gray-900 mb-4">
                   Artikel Lainnya
@@ -232,7 +188,6 @@ const BlogDetail = () => {
                 </div>
               </div>
 
-              {/* CTA ilyschool */}
               <div className="bg-primary rounded-2xl p-6 text-center">
                 <p className="font-heading font-bold text-white text-lg mb-2 leading-tight">
                   Siap Bangun Website Sekolah?
@@ -256,5 +211,3 @@ const BlogDetail = () => {
     </>
   )
 }
-
-export default BlogDetail

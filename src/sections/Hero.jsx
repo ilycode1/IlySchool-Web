@@ -1,3 +1,5 @@
+'use client'
+
 // src/sections/Hero.jsx
 import { useState, useEffect } from 'react'
 import {
@@ -16,7 +18,7 @@ import { GFORM_URL } from '@/config/constants'
 
 // ── DATA SLIDES ────────────────────────────────────────────────
 // Setiap slide punya background color berbeda
-// Nanti ganti bgColor dengan foto asli menggunakan bg-[url(...)]
+// Nanti ganti bgColor dengan foto asli menggunakan
 const SLIDES = [
   {
     id: 0,

@@ -1,3 +1,5 @@
+'use client'
+
 // src/sections/FAQ.jsx
 import { useState } from 'react'
 import { Plus, Minus } from 'lucide-react'

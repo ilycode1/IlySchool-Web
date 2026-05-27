@@ -1,4 +1,13 @@
 import { SEO_CONFIG } from '@/config/seo'
+import { FAQ_ITEMS } from '@/data/faq'
+import { PRICING_PLANS } from '@/data/pricing'
+import { TESTIMONIALS, getAverageRating } from '@/data/testimonials'
+import {
+  faqSchema,
+  serviceSchema,
+  aggregateRatingSchema,
+  jsonLdScript,
+} from '@/lib/jsonLd'
 import HomeClient from './HomeClient'
 
 export const metadata = {
@@ -15,5 +24,23 @@ export const metadata = {
 }
 
 export default function HomePage() {
-  return <HomeClient />
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdScript(faqSchema(FAQ_ITEMS))}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdScript(serviceSchema(PRICING_PLANS))}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdScript(
+          aggregateRatingSchema(getAverageRating(), TESTIMONIALS.length)
+        )}
+      />
+      <HomeClient />
+    </>
+  )
 }

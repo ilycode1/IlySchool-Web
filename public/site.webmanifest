@@ -1,0 +1,23 @@
+{
+  "name": "ilyschool — Website Sekolah Profesional",
+  "short_name": "ilyschool",
+  "description": "Platform website company profile khusus sekolah Indonesia. Mulai Rp 100.000/tahun.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a3c6e",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/ilyschool.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

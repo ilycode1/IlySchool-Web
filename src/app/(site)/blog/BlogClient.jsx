@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Calendar, Clock, Tag, ArrowRight } from 'lucide-react'
 import clsx from 'clsx'
 import { getAllPosts, getAllCategories, formatDate } from '@/data/blog'
@@ -18,10 +19,12 @@ const BlogCard = ({ post }) => (
   >
     <div className="relative aspect-[16/9] bg-gradient-to-br from-primary/10 to-primary/20 overflow-hidden">
       {post.thumbnail ? (
-        <img
+        <Image
           src={post.thumbnail}
           alt={post.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
       ) : (
         <div className="w-full h-full flex items-center justify-center">

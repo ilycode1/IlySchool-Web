@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Calendar, Clock, ArrowLeft, Tag } from 'lucide-react'
 import clsx from 'clsx'
 import { formatDate } from '@/data/blog'
@@ -55,12 +56,14 @@ const RelatedCard = ({ post }) => (
       'hover:border-primary/30 hover:shadow-md transition-all duration-200'
     )}
   >
-    <div className="w-20 h-20 rounded-lg bg-primary/10 flex-shrink-0 overflow-hidden">
+    <div className="relative w-20 h-20 rounded-lg bg-primary/10 flex-shrink-0 overflow-hidden">
       {post.thumbnail ? (
-        <img
+        <Image
           src={post.thumbnail}
           alt={post.title}
-          className="w-full h-full object-cover"
+          fill
+          sizes="80px"
+          className="object-cover"
         />
       ) : (
         <div className="w-full h-full flex items-center justify-center">
@@ -128,11 +131,16 @@ export default function BlogDetailContent({ post, related }) {
 
       {post.thumbnail && (
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10">
-          <img
-            src={post.thumbnail}
-            alt={post.title}
-            className="w-full rounded-2xl shadow-xl object-cover aspect-[16/9]"
-          />
+          <div className="relative w-full aspect-[16/9] rounded-2xl shadow-xl overflow-hidden">
+            <Image
+              src={post.thumbnail}
+              alt={post.title}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+            />
+          </div>
         </div>
       )}
 

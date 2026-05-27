@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { ArrowLeft, ExternalLink, Eye } from 'lucide-react'
 import clsx from 'clsx'
 import Button from '@/components/ui/Button'
@@ -18,11 +19,13 @@ const RelatedCard = ({ template, onClick }) => (
       'transition-all duration-300'
     )}
   >
-    <div className="aspect-video overflow-hidden">
-      <img
+    <div className="relative aspect-video overflow-hidden">
+      <Image
         src={template.thumbnail}
-        alt={template.name}
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        alt={`Template ${template.name} untuk ${template.suitableFor[0]}`}
+        fill
+        sizes="(max-width: 640px) 100vw, 33vw"
+        className="object-cover group-hover:scale-105 transition-transform duration-500"
       />
     </div>
     <div className="p-3 bg-white">

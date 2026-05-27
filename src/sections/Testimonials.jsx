@@ -2,6 +2,7 @@
 
 // src/sections/Testimonials.jsx
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 import clsx from 'clsx'
 import SectionWrapper from '@/components/shared/SectionWrapper'
@@ -84,9 +85,11 @@ const TestimonialCard = ({ testimonial, isActive }) => (
       {/* Author */}
       <div className="flex items-center gap-4">
         {/* Avatar */}
-        <img
+        <Image
           src={testimonial.avatar}
           alt={testimonial.name}
+          width={48}
+          height={48}
           className="w-12 h-12 rounded-full object-cover flex-shrink-0 border-2 border-gray-100"
         />
 
@@ -200,9 +203,11 @@ const Testimonials = () => {
                       : 'hover:bg-gray-50'
                   )}
                 >
-                  <img
+                  <Image
                     src={t.avatar}
                     alt={t.name}
+                    width={36}
+                    height={36}
                     className={clsx(
                       'w-9 h-9 rounded-full object-cover flex-shrink-0',
                       'transition-all duration-200',

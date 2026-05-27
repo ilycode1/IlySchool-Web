@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { getAllPosts, getPostBySlug } from '@/data/blog'
 import { BRAND_NAME } from '@/config/constants'
+import { breadcrumbSchema, jsonLdScript } from '@/lib/jsonLd'
 import BlogDetailContent from './BlogDetailContent'
 
 export function generateStaticParams() {
@@ -35,7 +36,7 @@ export default async function BlogDetailPage({ params }) {
   const allPosts = getAllPosts()
   const related = allPosts.filter((p) => p.slug !== slug).slice(0, 3)
 
-  const jsonLd = {
+  const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
@@ -51,12 +52,16 @@ export default async function BlogDetailPage({ params }) {
     url: `https://ilyschool.com/blog/${post.slug}`,
   }
 
+  const breadcrumb = breadcrumbSchema([
+    { name: 'Beranda', path: '/' },
+    { name: 'Blog', path: '/blog' },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ])
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(articleSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(breadcrumb)} />
       <BlogDetailContent post={post} related={related} />
     </>
   )

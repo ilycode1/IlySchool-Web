@@ -2,6 +2,7 @@
 
 // src/sections/Features.jsx
 import { useState } from 'react'
+import Image from 'next/image'
 import { Check, Monitor } from 'lucide-react'
 const featurePreview = '/assets/images/thumbnail/sage-mint.webp'
 import * as LucideIcons from 'lucide-react'
@@ -180,10 +181,13 @@ const Features = () => {
 
             {/* Mockup content */}
             <div className="relative">
-              <img
+              <Image
                 src={featurePreview}
-                alt="Preview website sekolah"
-                className="w-full"
+                alt="Preview tampilan website sekolah ilyschool — desain Sage Mint"
+                width={1200}
+                height={900}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="w-full h-auto"
               />
 
               {/* Floating feature callouts */}

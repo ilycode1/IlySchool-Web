@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { SEO_CONFIG } from '@/config/seo'
 import { getTemplateById, TEMPLATES } from '@/data/templates'
+import { productSchema, breadcrumbSchema, jsonLdScript } from '@/lib/jsonLd'
 import TemplatePreviewClient from './TemplatePreviewClient'
 
 export function generateStaticParams() {
@@ -34,5 +35,17 @@ export default async function TemplatePreviewPage({ params }) {
 
   const related = TEMPLATES.filter((t) => t.id !== template.id).slice(0, 3)
 
-  return <TemplatePreviewClient template={template} related={related} />
+  const breadcrumb = breadcrumbSchema([
+    { name: 'Beranda', path: '/' },
+    { name: 'Template', path: '/#templates' },
+    { name: template.name, path: `/template/${template.id}` },
+  ])
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(productSchema(template))} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(breadcrumb)} />
+      <TemplatePreviewClient template={template} related={related} />
+    </>
+  )
 }

@@ -3,6 +3,7 @@
 // src/sections/TemplateShowcase.jsx
 import { useState, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { Eye, ArrowRight } from 'lucide-react'
 import clsx from 'clsx'
 import SectionWrapper from '@/components/shared/SectionWrapper'
@@ -44,11 +45,13 @@ const TemplateCard = ({ template, index, isInView }) => {
     >
       {/* ── THUMBNAIL ─────────────────────────────────────── */}
       <div className="relative aspect-[4/3] overflow-hidden">
-        <img
+        <Image
           src={template.thumbnail}
-          alt={`Template ${template.name}`}
+          alt={`Template website sekolah ${template.name} — cocok untuk ${template.suitableFor[0]}`}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className={clsx(
-            'w-full h-full object-cover',
+            'object-cover',
             'transition-transform duration-500',
             isHovered && 'scale-105'
           )}

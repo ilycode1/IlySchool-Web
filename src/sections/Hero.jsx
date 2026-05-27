@@ -2,6 +2,7 @@
 
 // src/sections/Hero.jsx
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import {
   ArrowRight,
   ChevronLeft,
@@ -92,7 +93,7 @@ const Hero = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      goToNext()
+      setCurrentSlide((prev) => (prev + 1) % SLIDES.length)
     }, 4500)
 
     return () => clearInterval(interval)
@@ -229,10 +230,14 @@ const Hero = () => {
                   className="rounded-b-xl overflow-hidden border-x-2 border-b-2 border-white/30"
                   style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}
                 >
-                  <img
+                  <Image
                     src={slide.image}
-                    alt="Preview website sekolah"
-                    className="w-full"
+                    alt={`Preview website sekolah — ${slide.label}`}
+                    width={1200}
+                    height={900}
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 512px"
+                    className="w-full h-auto"
                   />
                 </div>
 

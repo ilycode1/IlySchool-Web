@@ -147,7 +147,9 @@ const PricingCard = ({ plan, index, isInView }) => {
               : 'bg-surface border-gray-100'
           )}
         >
-          <p className="text-sm text-gray-600 italic">&ldquo;{plan.tagline}&rdquo;</p>
+          <p className="text-sm text-gray-600 italic">
+            &ldquo;{plan.tagline}&rdquo;
+          </p>
         </div>
 
         {/* ── FEATURES LIST ────────────────────────────────── */}
@@ -160,7 +162,7 @@ const PricingCard = ({ plan, index, isInView }) => {
           {plan.additionalServices && (
             <div className="mt-2 pt-4 border-t border-gray-100">
               <p className="text-xs font-heading font-semibold text-gray-500 mb-2 uppercase tracking-wider">
-                Pilih 3 dari layanan berikut:
+                Pilih 1 dari layanan berikut:
               </p>
               <div className="flex flex-wrap gap-1">
                 {plan.additionalServices.map((service) => (

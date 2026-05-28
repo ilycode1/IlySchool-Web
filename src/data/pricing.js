@@ -81,7 +81,7 @@ export const PRICING_PLANS = [
       { text: '10 pilihan template desain', included: true },
       { text: '12x perubahan konten per tahun', included: true },
       { text: 'CMS lengkap & fleksibel', included: true },
-      { text: '3 layanan tambahan pilihan', included: true },
+      { text: '1 layanan tambahan pilihan', included: true },
       { text: 'Pilihan dari 50+ layanan tersedia', included: true },
     ],
 

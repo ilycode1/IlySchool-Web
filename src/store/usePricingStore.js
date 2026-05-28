@@ -27,7 +27,7 @@ const usePricingStore = create((set) => ({
     set((prev) => ({ showPromoPrice: !prev.showPromoPrice })),
 
   // ── LAYANAN TAMBAHAN (untuk Paket Unggul) ───────────────────
-  // Menyimpan 3 layanan tambahan yang dipilih user
+  // Menyimpan 1 layanan tambahan yang dipilih user
   // Array karena bisa pilih lebih dari satu (max 3)
   selectedServices: [],
 

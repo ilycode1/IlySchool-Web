@@ -3,6 +3,7 @@
 import useScrollspy from '@/hooks/useScrollspy'
 import {
   Hero,
+  PromoBanner,
   PainPoint,
   ProductOverview,
   TemplateShowcase,
@@ -20,10 +21,12 @@ export default function HomeClient() {
   return (
     <main>
       <Hero />
+      <PromoBanner id="promo" />
       <PainPoint />
       <ProductOverview />
       <TemplateShowcase />
       <Features />
+      <PromoBanner id="promo-pricing" background="surface" />
       <Pricing />
       <HowItWorks />
       <Testimonials />

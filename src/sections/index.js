@@ -3,6 +3,7 @@
 // Memudahkan import di App.jsx dan file lain
 
 export { default as Hero } from './Hero'
+export { default as PromoBanner } from './PromoBanner'
 export { default as PainPoint } from './PainPoint'
 export { default as ProductOverview } from './ProductOverview'
 export { default as TemplateShowcase } from './TemplateShowcase'
